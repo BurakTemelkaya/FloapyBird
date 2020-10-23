@@ -190,15 +190,16 @@ public class GameManager : MonoBehaviour
     {
         if (SettingsDropValue==0)
         {
-            Application.targetFrameRate = 30;
+            FPS = 30;
         }
         else if (SettingsDropValue == 1)
         {
-            Application.targetFrameRate = 60;
+            FPS = 60;
         }
         volume = ScrolBar.value;
         PlayerPrefs.SetFloat("Volume", volume);
         PlayerPrefs.SetInt("SettingsDV", SettingsDropValue);
+        Application.targetFrameRate = FPS;
         PlayerPrefs.SetInt("FPS",FPS);
         
         SettingsClose();

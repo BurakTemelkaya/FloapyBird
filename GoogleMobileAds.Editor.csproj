@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F795F406-30F8-D538-6165-011149473524}</ProjectGuid>
+    <ProjectGuid>{0219E70D-33CE-EF30-EAF9-006234C1F117}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>GoogleMobileAds.Editor</AssemblyName>
@@ -272,22 +272,22 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Google.IOSResolver_v1.2.159">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.159.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.IOSResolver_v1.2.159.dll</HintPath>
     </Reference>
     <Reference Include="Google.JarResolver_v1.2.159">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.159.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.JarResolver_v1.2.159.dll</HintPath>
     </Reference>
     <Reference Include="Google.PackageManagerResolver_v1.2.159">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.159.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.159.dll</HintPath>
     </Reference>
     <Reference Include="Google.VersionHandler">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.VersionHandler.dll</HintPath>
     </Reference>
     <Reference Include="Google.VersionHandlerImpl_v1.2.159">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.159.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/PackageCache/com.google.external-dependency-manager@1.2.159/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.159.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -644,21 +644,21 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>C:/Users/Burak/Desktop/FirmBird(AdMob 5.3)/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>C:/Users/Burak/Documents/GitHub/FloapyBird/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="GoogleMobileAds.csproj">
-      <Project>{6D51F0E5-17BB-28C6-9B32-54E2F31BD8B1}</Project>
+      <Project>{B2E68BB3-6223-4C59-006E-93C2F41D8BF3}</Project>
       <Name>GoogleMobileAds</Name>
     </ProjectReference>
   </ItemGroup>
