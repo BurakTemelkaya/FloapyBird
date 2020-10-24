@@ -280,7 +280,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: 98e6933348267499edb1c96e7d9848f3
+      Hash: 19e901190f7d0843c8e2288bb79dd760
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -720,4 +720,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Oyun.unity
-  playerPath: C:/Users/Burak/Desktop/FloappyBirdApk/FloapyBird.apk
+  playerPath: C:/Users/Burak/Desktop/FloappyBirdApk/FloapyBird.aab

@@ -8,7 +8,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
 
-    public int Bird, BirdDeger, Heal, ZamanMenu, UseHeal, Hscore, score, FPS, SettingsDropValue;
+    public int Bird, BirdDeger, Heal, ZamanMenu, UseHeal, Hscore, score, FPS, SettingsDropValue,Quality;
 
     public float volume;
 
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public Bird Birdy;
 
-    public Dropdown dropdown,SettingsDropdown;
+    public Dropdown dropdown,SettingsDropdown,QualityDropDown;
 
     public Scrollbar ScrolBar;
 
@@ -32,7 +32,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         FPS = PlayerPrefs.GetInt("FPS");
-        Application.targetFrameRate = FPS;
+        Quality = PlayerPrefs.GetInt("Quality");
+        Application.targetFrameRate = FPS;       
+        QualitySettings.SetQualityLevel(Quality);
+
 
         dif = PlayerPrefs.GetInt("Dif");
         dropdown.value = dif;
@@ -185,6 +188,7 @@ public class GameManager : MonoBehaviour
 
         SettingsDropdown.value = PlayerPrefs.GetInt("SettingsDV");
         ScrolBar.value = PlayerPrefs.GetFloat("Volume");
+        QualityDropDown.value = Quality;
     }
     public void SettingsSave()
     {
@@ -201,7 +205,10 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("SettingsDV", SettingsDropValue);
         Application.targetFrameRate = FPS;
         PlayerPrefs.SetInt("FPS",FPS);
-        
+        PlayerPrefs.SetInt("Quality", Quality);
+        QualitySettings.SetQualityLevel(Quality);
+
+
         SettingsClose();
     }
     public void SettingsClose()
@@ -209,6 +216,11 @@ public class GameManager : MonoBehaviour
         SettingsPanel.SetActive(false);
         Time.timeScale = 1;
         BirdSkin();
+    }
+    public void QualitySetting(int kalite)
+    {
+        Quality = kalite;
+        
     }
 
 
