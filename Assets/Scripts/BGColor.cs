@@ -20,7 +20,7 @@ public class BGColor : MonoBehaviour
         
     }
 
-    void Update()
+    void FixedUpdate()
     {
             
             if (r >= 255 && g <= 255 && b <= 0 )

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public Text MenuHighScore,HighTime,HealText,UsedHeal,AdControlText;
 
-    public GameObject RedBird, BlueBird, YellowBird, DeathScene,AdControl,SettingsPanel;
+    public GameObject RedBird, BlueBird, YellowBird, DeathScene,AdControl,SettingsPanel,ExitPanel;
 
     public Spawner spawn;
 
@@ -26,13 +26,22 @@ public class GameManager : MonoBehaviour
 
     public Scrollbar ScrolBar;
 
-    private int dif;
+    private int dif,save;
 
     
     void Start()
     {
-        FPS = PlayerPrefs.GetInt("FPS");
-        Quality = PlayerPrefs.GetInt("Quality");
+        if (PlayerPrefs.GetInt("Save")==1)
+        {
+            FPS = PlayerPrefs.GetInt("FPS");
+            Quality = PlayerPrefs.GetInt("Quality");
+        }
+        else
+        {
+            FPS = 30;
+            Quality = 1;
+            PlayerPrefs.SetFloat("Volume", 1);
+        }     
         Application.targetFrameRate = FPS;       
         QualitySettings.SetQualityLevel(Quality);
 
@@ -207,7 +216,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("FPS",FPS);
         PlayerPrefs.SetInt("Quality", Quality);
         QualitySettings.SetQualityLevel(Quality);
-
+        save = 1;
+        PlayerPrefs.SetInt("Save", save);
 
         SettingsClose();
     }
@@ -219,8 +229,19 @@ public class GameManager : MonoBehaviour
     }
     public void QualitySetting(int kalite)
     {
-        Quality = kalite;
-        
+        Quality = kalite;      
+    }
+    public void ExitPanelOpen()
+    {
+        ExitPanel.SetActive(true);
+    }
+    public void ExitPanelClose()
+    {
+        ExitPanel.SetActive(false);
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
 
 

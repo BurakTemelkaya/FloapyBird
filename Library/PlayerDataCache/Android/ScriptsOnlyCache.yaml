@@ -280,7 +280,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: 19e901190f7d0843c8e2288bb79dd760
+      Hash: 1007f1e5f9eccb84bf460083f174eb38
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -436,7 +436,7 @@ ScriptsOnlyBuild:
     className: BGColor
   - hash:
       serializedVersion: 2
-      Hash: 6d9a21818984ba2e73ea130fcdc53049
+      Hash: c4a6ce1e5f8205afcda813c4633a0002
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Spawner
@@ -694,7 +694,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: 3d9bc0beaae5209a6c93d7059b735d7e
+      Hash: a52d0e8b8bd41e32d73e88e103d70bb3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Move
@@ -720,4 +720,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Oyun.unity
-  playerPath: C:/Users/Burak/Desktop/FloappyBirdApk/FloapyBird.aab
+  playerPath: C:/Users/Burak/Desktop/FloappyBirdApk/FloapyBird.apk
