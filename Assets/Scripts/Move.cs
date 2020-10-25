@@ -7,14 +7,13 @@ public class Move : MonoBehaviour
 
     public float speed,dstry,roz;
 
-    private int Dif,rastgele;
+    private int Dif,r;
 
     private bool y, z;
 
-    public bool hu;
-
-    private void Start()
+    public void Start()
     {
+        random();
         Dif = PlayerPrefs.GetInt("Dif");
         if (Dif==2)
         {
@@ -25,16 +24,20 @@ public class Move : MonoBehaviour
             dstry = 3.1f;
         }
         Destroy(gameObject, dstry);
-        rastgele = Random.Range(0,2);
-        if (rastgele == 0)
-        {
-            y = true;
-            z = false;
-        }
-        else if (rastgele == 1)
+    }
+
+    public void random()
+    {       
+        r = Random.Range(0,2);
+        if (r==0)
         {
             y = false;
             z = true;
+        }
+        else
+        {
+            y = true;
+            z = false;
         }
     }
 
@@ -52,7 +55,7 @@ public class Move : MonoBehaviour
     }
     private void Hard()
     {
-        if (y == false)
+        if (!y)
         {
             transform.position += Vector3.up * Time.deltaTime / 4;
             if (transform.position.y >= 0.8f)
@@ -73,8 +76,7 @@ public class Move : MonoBehaviour
 
     public void VeryHard()
     {
-        
-        if (z == true)
+        if (z)
         {
             roz += Time.deltaTime*30;
             transform.rotation = Quaternion.Euler(0, 0, roz);

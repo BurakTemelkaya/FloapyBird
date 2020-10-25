@@ -508,6 +508,7 @@ MonoBehaviour:
   score: 0
   FPS: 0
   SettingsDropValue: 0
+  Quality: 0
   volume: 0
   ScoreText: {fileID: 1046898816}
   LastScore: {fileID: 630497704}
@@ -528,6 +529,7 @@ MonoBehaviour:
   Birdy: {fileID: 34102695}
   dropdown: {fileID: 0}
   SettingsDropdown: {fileID: 0}
+  QualityDropDown: {fileID: 0}
   ScrolBar: {fileID: 0}
 --- !u!4 &59381644
 Transform:
@@ -1321,6 +1323,7 @@ MonoBehaviour:
   Boru: {fileID: 3084232620267656797, guid: cbda87be761e2ff4a860aaaa891bf9d6, type: 3}
   height: 0.4
   time: 2
+  mv: {fileID: 3084232620267656786, guid: cbda87be761e2ff4a860aaaa891bf9d6, type: 3}
 --- !u!4 &794757951
 Transform:
   m_ObjectHideFlags: 0

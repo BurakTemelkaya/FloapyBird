@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour
 
     private int dif;
 
+    public Move mv;
+
 
     private void Start()
     {
@@ -33,9 +35,11 @@ public class Spawner : MonoBehaviour
         while (!BirdScript.isDead)
         {
 
-            RandomHeight=Random.Range(-height, height+0.2f);
+            RandomHeight =Random.Range(-height, height+0.2f);
 
             Instantiate(Boru, new Vector3(1, RandomHeight, 0), Quaternion.identity);
+
+            mv.random();
 
             yield return new WaitForSeconds(time);
         }      
