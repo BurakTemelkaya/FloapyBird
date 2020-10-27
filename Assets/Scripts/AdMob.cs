@@ -18,12 +18,20 @@ public class AdMob : MonoBehaviour
 
     public GameManager managerGame;
 
-    public int Heal;
+    private int BanAd;
     void Start()
     {
-        BannerReklam();
         MobileAds.Initialize(reklam => { });
-        CreateAndLoadRewardedAd();
+        if (PlayerPrefs.GetInt("Ban")!=1)
+        {
+            BannerReklam();
+        }
+        if (PlayerPrefs.GetInt("Rew")!=1)
+        {
+            CreateAndLoadRewardedAd();
+        }
+        
+
     }
 
     public void BannerReklam()
@@ -38,12 +46,25 @@ public class AdMob : MonoBehaviour
 
         banner = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
 
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = new AdRequest.Builder().Build();//reklam isteği
 
-        banner.LoadAd(request);
+        banner.LoadAd(request);// reklam isteğini yükleme     
 
+        BannerShow();
+        PlayerPrefs.SetInt("Ban",1);
     }
 
+    public void BannerShow()
+    {       
+        banner.Show();
+    }
+    public void BannerHide()
+    {
+       if(PlayerPrefs.GetInt("Ban") == 1)
+        {
+            banner.Hide();
+        }
+    }
     public void CreateAndLoadRewardedAd()
     {
 #if UNITY_ANDROID
@@ -62,18 +83,15 @@ public class AdMob : MonoBehaviour
 
         AdRequest request = new AdRequest.Builder().Build();
         rewardedAd.LoadAd(request);
-
         
     }
     public void HandleUserEarnedReward(object sender, Reward args)
     {
+        int Heal;
         Heal = PlayerPrefs.GetInt("Heal");
         Heal++;
         PlayerPrefs.SetInt("Heal",Heal);
-    }
-    public void DestroyBanner()
-    {
-        banner.Destroy();
+        PlayerPrefs.SetInt("Rew",1);
     }
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
@@ -94,6 +112,11 @@ public class AdMob : MonoBehaviour
             AdControl.SetActive(true);
             AdControlText.text = "Sorry, Ad video could not be uploaded. Try again later :(";
         }
+    }
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("Ban", 0);
+        PlayerPrefs.SetInt("Rew", 0);
     }
 
 

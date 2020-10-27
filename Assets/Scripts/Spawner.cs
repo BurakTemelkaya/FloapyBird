@@ -30,8 +30,7 @@ public class Spawner : MonoBehaviour
     }
 
     public IEnumerator SpawnObject(float time)
-    {
-        
+    {       
         while (!BirdScript.isDead)
         {
 

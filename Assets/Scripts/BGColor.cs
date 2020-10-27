@@ -11,13 +11,12 @@ public class BGColor : MonoBehaviour
 
     public Image BG;
 
-    public Text HScore, HTime,TScore,THTime,HealText,Heal,Title,Dif,DifLabel;
+    [HideInInspector]public Text HScore, HTime,TScore,THTime,HealText,Heal,Title,Dif,DifLabel;
 
     public int Color;
     void Start()
     {
-        Time.timeScale = 1;
-        
+        Time.timeScale = 1;      
     }
 
     void FixedUpdate()

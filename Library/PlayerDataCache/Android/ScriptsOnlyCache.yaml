@@ -256,7 +256,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 4e2dbccc5e719c273ba497161c5ab7e6
+      Hash: aa2d38ec4d48006500fd0b8d879d6c02
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AdMob
@@ -280,7 +280,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: 1007f1e5f9eccb84bf460083f174eb38
+      Hash: 8f39cbb213510baf7deaed42f67b0acd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -442,7 +442,7 @@ ScriptsOnlyBuild:
     className: Spawner
   - hash:
       serializedVersion: 2
-      Hash: 4edebf339dbac82f4e63ed077111e80b
+      Hash: 862b24a7bac5768622ba3ab4d6b715ad
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bird

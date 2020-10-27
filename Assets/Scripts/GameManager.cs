@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public Text MenuHighScore,HighTime,HealText,UsedHeal,AdControlText;
 
-    public GameObject RedBird, BlueBird, YellowBird, DeathScene,AdControl,SettingsPanel,ExitPanel;
+    public GameObject RedBird, BlueBird, YellowBird, DeathScene,GameScreen,AdControl,SettingsPanel,ExitPanel;
 
     public Spawner spawn;
 
@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     private int dif,save;
 
+    public AdMob ad;
+
     
     void Start()
     {
@@ -38,8 +40,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            FPS = 30;
-            Quality = 1;
             PlayerPrefs.SetFloat("Volume", 1);
         }     
         Application.targetFrameRate = FPS;       
@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Heal", Heal);
             PlayerPrefs.SetInt("UseHeal", UseHeal);
             DeathScene.SetActive(false);
+            GameScreen.SetActive(true);
             Birdy.isDead = false;
             Birdy.rb2D.transform.position = new Vector2(0,0);
             Time.timeScale = 1;            
@@ -161,9 +162,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         PlayerPrefs.SetInt("SkinDegeri", BirdDeger);
-        SceneManager.LoadScene("Oyun");
-        
-        
+        SceneManager.LoadScene("Oyun"); 
     }
     
     public void ReturnMenu()
@@ -209,6 +208,10 @@ public class GameManager : MonoBehaviour
         {
             FPS = 60;
         }
+        else
+        {
+            FPS=120;
+        }
         volume = ScrolBar.value;
         PlayerPrefs.SetFloat("Volume", volume);
         PlayerPrefs.SetInt("SettingsDV", SettingsDropValue);
@@ -228,21 +231,13 @@ public class GameManager : MonoBehaviour
         BirdSkin();
     }
     public void QualitySetting(int kalite)
-    {
-        Quality = kalite;      
-    }
+    {Quality = kalite;}
     public void ExitPanelOpen()
-    {
-        ExitPanel.SetActive(true);
-    }
+    {ExitPanel.SetActive(true);}
     public void ExitPanelClose()
-    {
-        ExitPanel.SetActive(false);
-    }
+    {ExitPanel.SetActive(false);}
     public void Exit()
-    {
-        Application.Quit();
-    }
+    {Application.Quit();}
 
 
     
