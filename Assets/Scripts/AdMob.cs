@@ -18,20 +18,20 @@ public class AdMob : MonoBehaviour
 
     public GameManager managerGame;
 
-    private int BanAd;
-    void Start()
+    private void Start()
     {
         MobileAds.Initialize(reklam => { });
-        if (PlayerPrefs.GetInt("Ban")!=1)
+
+        if (!PlayerPrefs.HasKey("Ban"))
         {
             BannerReklam();
+            
         }
-        if (PlayerPrefs.GetInt("Rew")!=1)
+        if (!PlayerPrefs.HasKey("Rew"))
         {
             CreateAndLoadRewardedAd();
         }
         
-
     }
 
     public void BannerReklam()
@@ -43,27 +43,18 @@ public class AdMob : MonoBehaviour
 #else
         string adUnitId = "unexpected_platform";
 #endif
-
         banner = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
 
         AdRequest request = new AdRequest.Builder().Build();//reklam isteği
 
-        banner.LoadAd(request);// reklam isteğini yükleme     
+        banner.OnAdLoaded += HandleOnAdLoaded;//Reklam isteği yüklendiğinde
 
-        BannerShow();
-        PlayerPrefs.SetInt("Ban",1);
+        banner.LoadAd(request);// reklam isteğini yükleme      
     }
-
-    public void BannerShow()
-    {       
-        banner.Show();
-    }
-    public void BannerHide()
+    public void HandleOnAdLoaded(object sender, EventArgs args)
     {
-       if(PlayerPrefs.GetInt("Ban") == 1)
-        {
-            banner.Hide();
-        }
+        banner.Show();
+        PlayerPrefs.SetInt("Ban", 1);
     }
     public void CreateAndLoadRewardedAd()
     {
@@ -77,13 +68,18 @@ public class AdMob : MonoBehaviour
 
         rewardedAd = new RewardedAd(adUnitId);
 
-        
+        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+        this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
 
         AdRequest request = new AdRequest.Builder().Build();
         rewardedAd.LoadAd(request);
         
+    }
+    public void HandleRewardedAdLoaded(object sender, EventArgs args)
+    {
+        PlayerPrefs.SetInt("Rew", 1);
     }
     public void HandleUserEarnedReward(object sender, Reward args)
     {
@@ -91,14 +87,18 @@ public class AdMob : MonoBehaviour
         Heal = PlayerPrefs.GetInt("Heal");
         Heal++;
         PlayerPrefs.SetInt("Heal",Heal);
-        PlayerPrefs.SetInt("Rew",1);
+        AdControl.SetActive(true);
+        AdControlText.text = "Congratulations, you earned heal. :)";
+    }
+    public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
+    {
+        AdControl.SetActive(true);
+        AdControlText.text = "You didn't win any rewards for closing the ad early. :(";
     }
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
-        managerGame.HealUpdate();
-        AdControl.SetActive(true);
-        AdControlText.text = "Congratulations, you earned heal. :)";
+        managerGame.HealUpdate();       
         CreateAndLoadRewardedAd();
     }
     public void UserChoseToWatchAd()
@@ -113,11 +113,18 @@ public class AdMob : MonoBehaviour
             AdControlText.text = "Sorry, Ad video could not be uploaded. Try again later :(";
         }
     }
-    void OnApplicationQuit()
+
+    private void Update()
     {
-        PlayerPrefs.SetInt("Ban", 0);
-        PlayerPrefs.SetInt("Rew", 0);
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("Ban");
+        PlayerPrefs.DeleteKey("Rew");
+    }
+    
 
 
 }

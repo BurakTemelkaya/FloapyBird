@@ -201,7 +201,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 1933258764018161309, guid: adc80b7bdc6b37040b7280cba3bc7257,
+  m_Sprite: {fileID: 9119582767357130973, guid: adc80b7bdc6b37040b7280cba3bc7257,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -278,10 +278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   velocity: 2
-  Zaman: 0
-  SaatDeger: 0
+  saniye: 0
   dakika: 0
-  LastTime: 0
   Heal: 0
   rb2D: {fileID: 34102694}
   managerGame: {fileID: 59381643}
@@ -296,7 +294,6 @@ MonoBehaviour:
   TimeText: {fileID: 1840574045}
   DeadTimeText: {fileID: 1260754996}
   DeadSceneHeal: {fileID: 1690174166}
-  ad: {fileID: 330487603}
 --- !u!82 &34102696
 AudioSource:
   m_ObjectHideFlags: 0
@@ -528,13 +525,11 @@ MonoBehaviour:
   AdControl: {fileID: 1888103230}
   SettingsPanel: {fileID: 0}
   ExitPanel: {fileID: 0}
-  spawn: {fileID: 794757950}
   Birdy: {fileID: 34102695}
   dropdown: {fileID: 0}
   SettingsDropdown: {fileID: 0}
   QualityDropDown: {fileID: 0}
   ScrolBar: {fileID: 0}
-  ad: {fileID: 330487603}
 --- !u!4 &59381644
 Transform:
   m_ObjectHideFlags: 0

@@ -33,8 +33,6 @@ public class Bird : MonoBehaviour
 
     private float volume;
 
-    public AdMob ad;
-
     private void Start()
     {
         volume = PlayerPrefs.GetFloat("Volume");
@@ -67,6 +65,7 @@ public class Bird : MonoBehaviour
         {
             rb2D.velocity = Vector2.up * velocity;
         }
+
     }
 
     private void Times()
@@ -151,7 +150,7 @@ public class Bird : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {     
         if (collision.gameObject.tag=="DeathArea")
-        {
+        {          
             TimeSetting();
             managerGame.HighScoreControl();
             managerGame.HealUpdate();
@@ -159,7 +158,6 @@ public class Bird : MonoBehaviour
             isDead = true;
             GameScren.SetActive(false);
             DeathScreen.SetActive(true);
-
         }
     }
 

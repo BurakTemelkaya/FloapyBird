@@ -18,17 +18,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject RedBird, BlueBird, YellowBird, DeathScene,GameScreen,AdControl,SettingsPanel,ExitPanel;
 
-    public Spawner spawn;
-
     public Bird Birdy;
 
     public Dropdown dropdown,SettingsDropdown,QualityDropDown;
 
     public Scrollbar ScrolBar;
 
-    private int dif,save;
-
-    public AdMob ad;
+    private int save;
 
     
     void Start()
@@ -41,17 +37,24 @@ public class GameManager : MonoBehaviour
         else
         {
             PlayerPrefs.SetFloat("Volume", 1);
-        }     
+            PlayerPrefs.SetInt("Quality", 1);
+        }
+        if (PlayerPrefs.GetString("HighZaman")!="")
+        {
+            HighTime.text = PlayerPrefs.GetString("HighZaman");
+        }
+        else
+        {
+            HighTime.text = "0";
+        }
         Application.targetFrameRate = FPS;       
         QualitySettings.SetQualityLevel(Quality);
 
-
-        dif = PlayerPrefs.GetInt("Dif");
-        dropdown.value = dif;
+        dropdown.value = PlayerPrefs.GetInt("Dif");
         Heal = PlayerPrefs.GetInt("Heal");
         HealText.text = Heal.ToString();
         MenuHighScore.text = PlayerPrefs.GetInt("HScore").ToString();
-        HighTime.text = PlayerPrefs.GetString("HighZaman");
+        
         Bird = PlayerPrefs.GetInt("SkinDegeri");       
         BirdSkin();
     }
@@ -81,8 +84,8 @@ public class GameManager : MonoBehaviour
         }
     }
     public void UpdateScore()
-    {            
-        score += dif+1;
+    {
+        score += PlayerPrefs.GetInt("Dif") + 1;
         ScoreText.text = score.ToString();
     }
 
@@ -177,7 +180,8 @@ public class GameManager : MonoBehaviour
 
     public void Diffuculty(int index)
     {
-        PlayerPrefs.SetInt("Dif", index);
+        int dif=index;      
+        PlayerPrefs.SetInt("Dif", dif);
     }
 
     public void FPSVoid(int fps)
@@ -237,7 +241,7 @@ public class GameManager : MonoBehaviour
     public void ExitPanelClose()
     {ExitPanel.SetActive(false);}
     public void Exit()
-    {Application.Quit();}
+    { Application.Quit(); }
 
 
     

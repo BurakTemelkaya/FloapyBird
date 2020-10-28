@@ -280,7 +280,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: 8f39cbb213510baf7deaed42f67b0acd
+      Hash: a1879597696f7ee0efa0c4f05c7b0ea5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -442,7 +442,7 @@ ScriptsOnlyBuild:
     className: Spawner
   - hash:
       serializedVersion: 2
-      Hash: 862b24a7bac5768622ba3ab4d6b715ad
+      Hash: 8f534ba8d0c0f7b925939e6a95fdb5ff
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bird
