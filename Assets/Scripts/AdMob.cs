@@ -18,16 +18,12 @@ public class AdMob : MonoBehaviour
 
     public GameManager managerGame;
 
-    bool ad,rew;
+    bool ad;
+
 
     private void Start()
     {
-        if (!rew)
-        {
-            CreateAndLoadRewardedAd();
-            rew = true;
-        }
-           
+        CreateAndLoadRewardedAd();     
     }
     public void BannerReklam()
     {
@@ -115,7 +111,7 @@ public class AdMob : MonoBehaviour
         {            
             BannerReklam();           
             ad = true;
-        }   
+        }
     }
 
 

@@ -9,8 +9,6 @@ ScriptsOnlyBuild:
     - Spawner
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
-    GoogleMobileAds.dll:
-    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -442,7 +440,7 @@ ScriptsOnlyBuild:
     className: Spawner
   - hash:
       serializedVersion: 2
-      Hash: 8f534ba8d0c0f7b925939e6a95fdb5ff
+      Hash: 1e4d2ea7969f3f5ff216e1c7d87d08f6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bird

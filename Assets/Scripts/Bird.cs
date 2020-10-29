@@ -17,7 +17,7 @@ public class Bird : MonoBehaviour
 
     public GameManager managerGame;
 
-    public GameObject DeathScreen, GameScren;
+    public GameObject DeathScreen, GameScren, admob;
 
     public AudioClip Point;
 
@@ -123,21 +123,13 @@ public class Bird : MonoBehaviour
         int HighTimeDakika = PlayerPrefs.GetInt("Dakika");
 
         if (HighTimeSaniye < saniye && HighTimeDakika <= dakika || HighTimeSaniye <= saniye && dakika < HighTimeDakika)
-       {
-            if (dakika==0)
-            {
-                //DeadTimeText.text = "" + (int)Zaman;
-                PlayerPrefs.SetString("HighZaman", "" + saniye);
-            }
-            else
-            {                
-                //DeadTimeText.text = dakika+ " : " + saniye;
-                PlayerPrefs.SetString("HighZaman", TimeText.text);
-                PlayerPrefs.SetInt("Dakika",dakika);
-            }
-            DeadTimeText.text = TimeText.text;
-            PlayerPrefs.SetInt("Saniye", (int)saniye);
+        {
+            PlayerPrefs.SetString("HighZaman", TimeText.text);
+                
+            PlayerPrefs.SetInt("Saniye", saniye);
+            PlayerPrefs.SetInt("Dakika", dakika);
         }
+        DeadTimeText.text = TimeText.text;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -150,14 +142,15 @@ public class Bird : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {     
         if (collision.gameObject.tag=="DeathArea")
-        {          
+        {
+            admob.SetActive(true);
             TimeSetting();
             managerGame.HighScoreControl();
             managerGame.HealUpdate();
             Time.timeScale = 0;
             isDead = true;
             GameScren.SetActive(false);
-            DeathScreen.SetActive(true);
+            DeathScreen.SetActive(true);           
         }
     }
 

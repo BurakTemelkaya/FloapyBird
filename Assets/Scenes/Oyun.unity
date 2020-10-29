@@ -285,6 +285,7 @@ MonoBehaviour:
   managerGame: {fileID: 59381643}
   DeathScreen: {fileID: 713566465}
   GameScren: {fileID: 284871288}
+  admob: {fileID: 330487602}
   Point: {fileID: 8300000, guid: 962067ad62af6cc46852309a967699ef, type: 3}
   Sounds: {fileID: 34102696}
   DeadScreenSound: {fileID: 713566467}
@@ -906,12 +907,12 @@ GameObject:
   - component: {fileID: 330487604}
   - component: {fileID: 330487603}
   m_Layer: 0
-  m_Name: AdMobBanner
+  m_Name: AdMob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &330487603
 MonoBehaviour:
   m_ObjectHideFlags: 0

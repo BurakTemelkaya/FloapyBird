@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Quality", 1);
             PlayerPrefs.SetInt("FPS", 60);
             PlayerPrefs.SetInt("Save", 1);
+            PlayerPrefs.SetInt("SettingsDV", 1);
         }
         if (PlayerPrefs.HasKey("HighZaman"))
         {
