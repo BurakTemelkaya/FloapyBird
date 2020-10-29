@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
 
     public Scrollbar ScrolBar;
 
-    private int save;
-
     
     void Start()
     {
@@ -34,6 +32,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("Volume", 1);
             PlayerPrefs.SetInt("Quality", 1);
             PlayerPrefs.SetInt("FPS", 60);
+            PlayerPrefs.SetInt("Save", 1);
         }
         if (PlayerPrefs.HasKey("HighZaman"))
         {
@@ -201,17 +200,11 @@ public class GameManager : MonoBehaviour
     public void SettingsSave()
     {
         if (SettingsDropValue==0)
-        {
             FPS = 30;
-        }
         else if (SettingsDropValue == 1)
-        {
             FPS = 60;
-        }
         else
-        {
             FPS=120;
-        }
         volume = ScrolBar.value;
         PlayerPrefs.SetFloat("Volume", volume);
         PlayerPrefs.SetInt("SettingsDV", SettingsDropValue);
@@ -219,9 +212,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("FPS",FPS);
         PlayerPrefs.SetInt("Quality", Quality);
         QualitySettings.SetQualityLevel(Quality);
-        save = 1;
-        PlayerPrefs.SetInt("Save", save);
-
+        PlayerPrefs.SetInt("Save", 1);
         SettingsClose();
     }
     public void SettingsClose()

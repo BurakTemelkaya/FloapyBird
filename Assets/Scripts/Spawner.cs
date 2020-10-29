@@ -28,7 +28,6 @@ public class Spawner : MonoBehaviour
         }
         StartCoroutine(SpawnObject(time));
     }
-
     public IEnumerator SpawnObject(float time)
     {       
         while (!BirdScript.isDead)
