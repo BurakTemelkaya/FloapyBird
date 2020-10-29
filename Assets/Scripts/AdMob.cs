@@ -18,22 +18,17 @@ public class AdMob : MonoBehaviour
 
     public GameManager managerGame;
 
+    bool ad,rew;
+
     private void Start()
     {
-        MobileAds.Initialize(reklam => { });
-
-        if (!PlayerPrefs.HasKey("Ban"))
-        {
-            BannerReklam();
-            
-        }
-        if (!PlayerPrefs.HasKey("Rew"))
+        if (!rew)
         {
             CreateAndLoadRewardedAd();
+            rew = true;
         }
-        
+           
     }
-
     public void BannerReklam()
     {
 #if UNITY_ANDROID
@@ -54,7 +49,6 @@ public class AdMob : MonoBehaviour
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
         banner.Show();
-        PlayerPrefs.SetInt("Ban", 1);
     }
     public void CreateAndLoadRewardedAd()
     {
@@ -68,18 +62,13 @@ public class AdMob : MonoBehaviour
 
         rewardedAd = new RewardedAd(adUnitId);
 
-        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-        this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
+        rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
 
         AdRequest request = new AdRequest.Builder().Build();
         rewardedAd.LoadAd(request);
         
-    }
-    public void HandleRewardedAdLoaded(object sender, EventArgs args)
-    {
-        PlayerPrefs.SetInt("Rew", 1);
     }
     public void HandleUserEarnedReward(object sender, Reward args)
     {
@@ -117,14 +106,19 @@ public class AdMob : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            Application.Quit();
+            managerGame.ExitPanelOpen();
     }
-    private void OnApplicationQuit()
+    private void OnApplicationPause(bool pause)
     {
-        PlayerPrefs.DeleteKey("Ban");
-        PlayerPrefs.DeleteKey("Rew");
+        MobileAds.Initialize(reklam => { });
+        if (!ad)
+        {            
+            BannerReklam();           
+            ad = true;
+        }   
     }
-    
+
+
 
 
 }

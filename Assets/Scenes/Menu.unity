@@ -7003,13 +7003,11 @@ MonoBehaviour:
   AdControl: {fileID: 31804134}
   SettingsPanel: {fileID: 1988964064}
   ExitPanel: {fileID: 169695538}
-  spawn: {fileID: 0}
   Birdy: {fileID: 0}
   dropdown: {fileID: 632338148}
   SettingsDropdown: {fileID: 2056059520}
   QualityDropDown: {fileID: 763546573}
   ScrolBar: {fileID: 1082870824}
-  ad: {fileID: 0}
 --- !u!4 &1973360063
 Transform:
   m_ObjectHideFlags: 0
