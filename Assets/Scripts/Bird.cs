@@ -65,6 +65,7 @@ public class Bird : MonoBehaviour
         {
             rb2D.velocity = Vector2.up * velocity;
         }
+        
 
     }
 

@@ -23,7 +23,11 @@ public class AdMob : MonoBehaviour
 
     private void Start()
     {
-        CreateAndLoadRewardedAd();     
+        if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork && !PlayerPrefs.HasKey("Rew"))
+        {
+            CreateAndLoadRewardedAd();
+        }
+             
     }
     public void BannerReklam()
     {
@@ -40,7 +44,7 @@ public class AdMob : MonoBehaviour
 
         banner.OnAdLoaded += HandleOnAdLoaded;//Reklam isteği yüklendiğinde
 
-        banner.LoadAd(request);// reklam isteğini yükleme      
+        banner.LoadAd(request);// reklam isteğini yükleme 
     }
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
@@ -60,10 +64,11 @@ public class AdMob : MonoBehaviour
 
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-        rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
 
         AdRequest request = new AdRequest.Builder().Build();
+
         rewardedAd.LoadAd(request);
+        
         
     }
     public void HandleUserEarnedReward(object sender, Reward args)
@@ -75,12 +80,6 @@ public class AdMob : MonoBehaviour
         AdControl.SetActive(true);
         AdControlText.text = "Congratulations, you earned heal. :)";
     }
-    public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
-    {
-        AdControl.SetActive(true);
-        AdControlText.text = "You didn't win any rewards for closing the ad early. :(";
-    }
-
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         managerGame.HealUpdate();       
@@ -91,11 +90,16 @@ public class AdMob : MonoBehaviour
         if (rewardedAd.IsLoaded())
         {
             rewardedAd.Show();
-        }
+        }      
         else
         {
             AdControl.SetActive(true);
             AdControlText.text = "Sorry, Ad video could not be uploaded. Try again later :(";
+        }
+        if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork)
+        {
+            AdControl.SetActive(true);
+            AdControlText.text = "The ad video was not uploaded because you are on mobile data.";
         }
     }
 
@@ -107,7 +111,7 @@ public class AdMob : MonoBehaviour
     private void OnApplicationPause(bool pause)
     {
         MobileAds.Initialize(reklam => { });
-        if (!ad)
+        if (!ad && Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
         {            
             BannerReklam();           
             ad = true;

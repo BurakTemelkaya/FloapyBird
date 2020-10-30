@@ -56,7 +56,7 @@ QualitySettings:
     shadowmaskMode: 1
     skinWeights: 1
     textureQuality: 0
-    anisotropicTextures: 0
+    anisotropicTextures: 1
     antiAliasing: 0
     softParticles: 0
     softVegetation: 0
@@ -82,7 +82,7 @@ QualitySettings:
     name: High
     pixelLightCount: 0
     shadows: 0
-    shadowResolution: 1
+    shadowResolution: 0
     shadowProjection: 0
     shadowCascades: 1
     shadowDistance: 0

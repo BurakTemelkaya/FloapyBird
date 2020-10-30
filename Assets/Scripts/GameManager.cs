@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("Volume", 1);
             PlayerPrefs.SetInt("Quality", 1);
             PlayerPrefs.SetInt("FPS", 60);
-            PlayerPrefs.SetInt("Save", 1);
             PlayerPrefs.SetInt("SettingsDV", 1);
+            PlayerPrefs.SetInt("Save", 1);
         }
         if (PlayerPrefs.HasKey("HighZaman"))
         {
@@ -43,8 +43,9 @@ public class GameManager : MonoBehaviour
         {
             HighTime.text = "0";
         }
-        Application.targetFrameRate = PlayerPrefs.GetInt("FPS");       
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
+        Application.targetFrameRate = PlayerPrefs.GetInt("FPS");       
+        
 
         dropdown.value = PlayerPrefs.GetInt("Dif");
         Heal = PlayerPrefs.GetInt("Heal");
@@ -208,11 +209,11 @@ public class GameManager : MonoBehaviour
             FPS=120;
         volume = ScrolBar.value;
         PlayerPrefs.SetFloat("Volume", volume);
-        PlayerPrefs.SetInt("SettingsDV", SettingsDropValue);
-        Application.targetFrameRate = FPS;
-        PlayerPrefs.SetInt("FPS",FPS);
+        PlayerPrefs.SetInt("SettingsDV", SettingsDropValue);              
         PlayerPrefs.SetInt("Quality", Quality);
         QualitySettings.SetQualityLevel(Quality);
+        PlayerPrefs.SetInt("FPS", FPS);
+        Application.targetFrameRate = FPS;
         PlayerPrefs.SetInt("Save", 1);
         SettingsClose();
     }
