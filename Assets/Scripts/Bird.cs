@@ -144,7 +144,6 @@ public class Bird : MonoBehaviour
     {     
         if (collision.gameObject.tag=="DeathArea")
         {
-            admob.SetActive(true);
             TimeSetting();
             managerGame.HighScoreControl();
             managerGame.HealUpdate();

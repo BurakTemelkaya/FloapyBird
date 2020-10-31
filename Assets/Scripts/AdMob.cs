@@ -18,16 +18,33 @@ public class AdMob : MonoBehaviour
 
     public GameManager managerGame;
 
-    bool ad;
+    bool ban,rew;
 
+    private static AdMob obje = null;
 
+    private void Awake()
+    {
+        if (obje==null)
+        {
+            obje = this;
+            DontDestroyOnLoad(this);
+        }
+        else if(this != obje)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
-        if (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork && !PlayerPrefs.HasKey("Rew"))
+        MobileAds.Initialize(reklam => { });
+        if (!ban)
+        {
+            BannerReklam();
+        }
+        if (!rew)
         {
             CreateAndLoadRewardedAd();
-        }
-             
+        }               
     }
     public void BannerReklam()
     {
@@ -41,14 +58,15 @@ public class AdMob : MonoBehaviour
         banner = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
 
         AdRequest request = new AdRequest.Builder().Build();//reklam isteği
+        
+        banner.LoadAd(request);// reklam isteğini yükleme 
 
         banner.OnAdLoaded += HandleOnAdLoaded;//Reklam isteği yüklendiğinde
-
-        banner.LoadAd(request);// reklam isteğini yükleme 
     }
     public void HandleOnAdLoaded(object sender, EventArgs args)
-    {
+    {       
         banner.Show();
+        ban = true;
     }
     public void CreateAndLoadRewardedAd()
     {
@@ -62,14 +80,19 @@ public class AdMob : MonoBehaviour
 
         rewardedAd = new RewardedAd(adUnitId);
 
-        rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-        rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+        AdRequest requestrew = new AdRequest.Builder().Build();//Reklam videosu isteği
 
-        AdRequest request = new AdRequest.Builder().Build();
+        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;//Reklam videosu başarılı bir şekilde yüklendiğinde
+        rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;//Reklam Videosu tam izlendikten sonra ödül verme işlemi
 
-        rewardedAd.LoadAd(request);
-        
-        
+        rewardedAd.OnAdClosed += HandleRewardedAdClosed;//Reklam videosu kapandıktan sonra yapılacak işlemler
+
+        rewardedAd.LoadAd(requestrew);//Reklam videosu yükleme
+
+    }
+    public void HandleRewardedAdLoaded(object sender, EventArgs args)
+    {
+        rew = true;
     }
     public void HandleUserEarnedReward(object sender, Reward args)
     {
@@ -107,15 +130,6 @@ public class AdMob : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             managerGame.ExitPanelOpen();
-    }
-    private void OnApplicationPause(bool pause)
-    {
-        MobileAds.Initialize(reklam => { });
-        if (!ad && Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
-        {            
-            BannerReklam();           
-            ad = true;
-        }
     }
 
 
