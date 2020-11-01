@@ -31,7 +31,7 @@ public class Bird : MonoBehaviour
 
     private int BirdSDeger;
 
-    private float volume;
+    private float volume,dikeyHiz,yatayHiz=2.5f;
 
     private void Start()
     {
@@ -64,11 +64,21 @@ public class Bird : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             rb2D.velocity = Vector2.up * velocity;
+            dikeyHiz = 1f;
         }
-        
 
+        dikeyHiz -= 3.5f * Time.deltaTime;
+
+        float egim = 90 * dikeyHiz / yatayHiz;
+
+        if (egim < -50)
+            egim = -50;
+
+        else if (egim > 50)
+            egim = 50;
+
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, egim);
     }
-
     private void Times()
     {
         saniye++;  
@@ -107,7 +117,6 @@ public class Bird : MonoBehaviour
             }
         }
     }
-
     public IEnumerator IEZaman()
     {        
         while(!isDead)
@@ -116,8 +125,6 @@ public class Bird : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }       
     }
-
-
     private void TimeSetting()
     {
         int HighTimeSaniye = PlayerPrefs.GetInt("Saniye");

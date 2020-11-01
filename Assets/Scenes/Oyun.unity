@@ -263,7 +263,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &34102695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,10 +1089,10 @@ RectTransform:
   m_Father: {fileID: 808658720}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.526}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 10.8}
-  m_SizeDelta: {x: 26.290733, y: 25.207336}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 1, y: -1.2000008}
+  m_SizeDelta: {x: -33.709267, y: 1.2073364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &688998352
 MonoBehaviour:
@@ -1569,8 +1569,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: UserChoseToWatchAd
+      - m_Target: {fileID: 59381643}
+        m_MethodName: AdVideoWatch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2375,7 +2375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2466667}
   m_AnchorMax: {x: 1, y: 0.32000002}
-  m_AnchoredPosition: {x: 97.703, y: 2.199974}
+  m_AnchoredPosition: {x: 97.703, y: 2.1969223}
   m_SizeDelta: {x: -243.4749, y: -1.7247009}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1250629096

@@ -12,10 +12,6 @@ public class AdMob : MonoBehaviour
     public BannerView banner;
     private RewardedAd rewardedAd;
 
-    public Text AdControlText;
-
-    public GameObject AdControl;
-
     public GameManager managerGame;
 
     bool ban,rew;
@@ -33,10 +29,11 @@ public class AdMob : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
     private void Start()
     {
-        MobileAds.Initialize(reklam => { });
+        MobileAds.Initialize(reklam => { });       
         if (!ban)
         {
             BannerReklam();
@@ -44,7 +41,8 @@ public class AdMob : MonoBehaviour
         if (!rew)
         {
             CreateAndLoadRewardedAd();
-        }               
+        }
+        managerGame = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     public void BannerReklam()
     {
@@ -84,7 +82,6 @@ public class AdMob : MonoBehaviour
 
         rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;//Reklam videosu başarılı bir şekilde yüklendiğinde
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;//Reklam Videosu tam izlendikten sonra ödül verme işlemi
-
         rewardedAd.OnAdClosed += HandleRewardedAdClosed;//Reklam videosu kapandıktan sonra yapılacak işlemler
 
         rewardedAd.LoadAd(requestrew);//Reklam videosu yükleme
@@ -100,8 +97,8 @@ public class AdMob : MonoBehaviour
         Heal = PlayerPrefs.GetInt("Heal");
         Heal++;
         PlayerPrefs.SetInt("Heal",Heal);
-        AdControl.SetActive(true);
-        AdControlText.text = "Congratulations, you earned heal. :)";
+        managerGame.AdControl.SetActive(true);
+        managerGame.AdControlText.text = "Congratulations, you earned heal. :)";
     }
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
@@ -116,13 +113,8 @@ public class AdMob : MonoBehaviour
         }      
         else
         {
-            AdControl.SetActive(true);
-            AdControlText.text = "Sorry, Ad video could not be uploaded. Try again later :(";
-        }
-        if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork)
-        {
-            AdControl.SetActive(true);
-            AdControlText.text = "The ad video was not uploaded because you are on mobile data.";
+            managerGame.AdControl.SetActive(true);
+            managerGame.AdControlText.text = "Sorry, Ad video could not be uploaded. Try again later :(";
         }
     }
 

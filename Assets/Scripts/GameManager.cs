@@ -24,9 +24,22 @@ public class GameManager : MonoBehaviour
 
     public Scrollbar ScrolBar;
 
-    
+    private static AdMob ad = null;
+
+    private void Awake()
+    {
+        if (ad == null)
+        {
+            ad = GameObject.Find("AdMob").GetComponent<AdMob>();
+        }
+        else if (ad!=null)
+        {
+            Destroy(ad);
+        }
+    }
     void Start()
     {
+        
         if (!PlayerPrefs.HasKey("Save"))
         {
             PlayerPrefs.SetFloat("Volume", 1);
@@ -123,7 +136,7 @@ public class GameManager : MonoBehaviour
         }
         BirdSkin();
     }
-
+    
     public void azalt()
     {
         Bird--;
@@ -231,6 +244,14 @@ public class GameManager : MonoBehaviour
     {ExitPanel.SetActive(false);}
     public void Exit()
     { Application.Quit(); }
+    public void AdVideoWatch()
+    {
+        ad.UserChoseToWatchAd();
+    }
+    public void AdControlPanelOpen()
+    {
+        AdControl.SetActive(true);
+    }
 
 
     
