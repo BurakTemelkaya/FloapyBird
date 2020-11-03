@@ -12,11 +12,11 @@ public class AdMob : MonoBehaviour
     public BannerView banner;
     private RewardedAd rewardedAd;
 
-    public GameManager managerGame;
+    public GameManager managerGame = null;
 
     bool ban,rew;
 
-    private static AdMob obje = null;
+    public static AdMob obje = null;
 
     private void Awake()
     {
@@ -29,7 +29,8 @@ public class AdMob : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
+      
     }
     private void Start()
     {
@@ -42,7 +43,6 @@ public class AdMob : MonoBehaviour
         {
             CreateAndLoadRewardedAd();
         }
-        managerGame = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     public void BannerReklam()
     {
@@ -116,6 +116,10 @@ public class AdMob : MonoBehaviour
             managerGame.AdControl.SetActive(true);
             managerGame.AdControlText.text = "Sorry, Ad video could not be uploaded. Try again later :(";
         }
+    }
+    public void GameManagerGetCompenent()
+    {
+        managerGame = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()

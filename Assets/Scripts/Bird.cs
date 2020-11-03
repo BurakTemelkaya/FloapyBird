@@ -67,15 +67,15 @@ public class Bird : MonoBehaviour
             dikeyHiz = 1f;
         }
 
-        dikeyHiz -= 3.5f * Time.deltaTime;
+        dikeyHiz -= 3f * Time.deltaTime;
 
         float egim = 90 * dikeyHiz / yatayHiz;
 
-        if (egim < -50)
-            egim = -50;
+        if (egim < -30)
+            egim = -30;
 
-        else if (egim > 50)
-            egim = 50;
+        else if (egim > 30)
+            egim = 30;
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, egim);
     }

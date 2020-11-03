@@ -531,6 +531,7 @@ MonoBehaviour:
   SettingsDropdown: {fileID: 0}
   QualityDropDown: {fileID: 0}
   ScrolBar: {fileID: 0}
+  ad: {fileID: 0}
 --- !u!4 &59381644
 Transform:
   m_ObjectHideFlags: 0
@@ -2375,7 +2376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2466667}
   m_AnchorMax: {x: 1, y: 0.32000002}
-  m_AnchoredPosition: {x: 97.703, y: 2.1969223}
+  m_AnchoredPosition: {x: 97.703, y: 2.1967697}
   m_SizeDelta: {x: -243.4749, y: -1.7247009}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1250629096

@@ -24,22 +24,16 @@ public class GameManager : MonoBehaviour
 
     public Scrollbar ScrolBar;
 
-    private static AdMob ad = null;
+    public AdMob ad = null;
 
     private void Awake()
     {
-        if (ad == null)
-        {
-            ad = GameObject.Find("AdMob").GetComponent<AdMob>();
-        }
-        else if (ad!=null)
-        {
-            Destroy(ad);
-        }
+        ad = GameObject.Find("AdMob").GetComponent<AdMob>();
+        ad.GameManagerGetCompenent();
+
     }
     void Start()
-    {
-        
+    {       
         if (!PlayerPrefs.HasKey("Save"))
         {
             PlayerPrefs.SetFloat("Volume", 1);
@@ -65,8 +59,9 @@ public class GameManager : MonoBehaviour
         HealText.text = Heal.ToString();
         MenuHighScore.text = PlayerPrefs.GetInt("HScore").ToString();
         
-        Bird = PlayerPrefs.GetInt("SkinDegeri");       
-        BirdSkin();
+        Bird = PlayerPrefs.GetInt("SkinDegeri");
+        BirdSkin();        
+        
     }
 
     public void HealUse()

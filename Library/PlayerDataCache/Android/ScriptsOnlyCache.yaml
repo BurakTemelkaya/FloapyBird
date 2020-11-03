@@ -278,7 +278,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: a1879597696f7ee0efa0c4f05c7b0ea5
+      Hash: 4348857d1f1e357840df5cb50a5be1d6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
