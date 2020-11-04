@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
-using GoogleMobileAds.Android;
 using System;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class AdMob : MonoBehaviour
 {
@@ -14,7 +11,7 @@ public class AdMob : MonoBehaviour
 
     public GameManager managerGame = null;
 
-    bool ban,rew;
+    bool rew;
 
     public static AdMob obje = null;
 
@@ -29,47 +26,19 @@ public class AdMob : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-      
     }
     private void Start()
     {
-        MobileAds.Initialize(reklam => { });       
-        if (!ban)
-        {
-            BannerReklam();
-        }
+        MobileAds.Initialize(reklam => { });
         if (!rew)
         {
             CreateAndLoadRewardedAd();
         }
     }
-    public void BannerReklam()
-    {
-#if UNITY_ANDROID
-            string adUnitId = "ca-app-pub-3940256099942544/6300978111";
-#elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/2934735716";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-        banner = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
-
-        AdRequest request = new AdRequest.Builder().Build();//reklam isteği
-        
-        banner.LoadAd(request);// reklam isteğini yükleme 
-
-        banner.OnAdLoaded += HandleOnAdLoaded;//Reklam isteği yüklendiğinde
-    }
-    public void HandleOnAdLoaded(object sender, EventArgs args)
-    {       
-        banner.Show();
-        ban = true;
-    }
     public void CreateAndLoadRewardedAd()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        string adUnitId = "ca-app-pub-3940256099942544/5224354917";//ca-app-pub-6643171955921787/6886730600//gerçek reklam birimi
 #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/1712485313";
 #else
@@ -121,7 +90,6 @@ public class AdMob : MonoBehaviour
     {
         managerGame = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
