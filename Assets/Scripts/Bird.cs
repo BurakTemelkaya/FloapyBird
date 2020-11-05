@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -25,7 +24,7 @@ public class Bird : MonoBehaviour
 
     public Animator anim;
 
-    public GameObject BGNight, BGMorning;
+    
 
     public Text TimeText, DeadTimeText, DeadSceneHeal;
 
@@ -48,13 +47,6 @@ public class Bird : MonoBehaviour
         { anim.Play("YellowBird"); }
 
         Sounds.clip = Point;
-        int SaatDeger = DateTime.Now.Hour;
-        if (SaatDeger >= 18 || SaatDeger <= 6)
-        { BGNight.SetActive(true); }
-        else
-        { BGMorning.SetActive(true); }
-        
-        Time.timeScale = 1;
 
         StartCoroutine(IEZaman());
     }

@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
     public AdMob ad = null;
 
+    public Wait wait;
+
     private void Awake()
     {
         ad = GameObject.Find("AdMob").GetComponent<AdMob>();
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void HealUse()
     {
-        Heal = PlayerPrefs.GetInt("Heal");
+        Heal = PlayerPrefs.GetInt("Heal")+1;
         if (Heal == 0)
         {
             HealText.color = Color.red;
@@ -74,7 +76,7 @@ public class GameManager : MonoBehaviour
             AdControlText.text = "It seems you have no heal, you can earn heal by watching the ads.";
         }
         else
-        {
+        {         
             Destroy(GameObject.Find("Borular(Clone)"));
             Heal--;
             UseHeal++;
@@ -82,10 +84,11 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Heal", Heal);
             PlayerPrefs.SetInt("UseHeal", UseHeal);
             DeathScene.SetActive(false);
-            GameScreen.SetActive(true);
-            Birdy.isDead = false;
+            GameScreen.SetActive(true);           
             Birdy.rb2D.transform.position = new Vector2(0,0);
-            Time.timeScale = 1;            
+            wait.SetactiveFalse();
+            Time.timeScale = 1;
+            StartCoroutine(wait.WaitIE());
         }
     }
     public void UpdateScore()
