@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 
 public class Bird : MonoBehaviour
 {
-    public bool isDead;
+    public bool isDead=true;
 
     public float velocity = 1f;
 
@@ -16,15 +17,13 @@ public class Bird : MonoBehaviour
 
     public GameManager managerGame;
 
-    public GameObject DeathScreen, GameScren, admob;
+    public GameObject DeathScreen, GameScren, admob, Nigh , Morning;
 
     public AudioClip Point;
 
     public AudioSource Sounds, DeadScreenSound;
 
     public Animator anim;
-
-    
 
     public Text TimeText, DeadTimeText, DeadSceneHeal;
 
@@ -38,6 +37,12 @@ public class Bird : MonoBehaviour
         Sounds.volume = volume;
         DeadScreenSound.volume = volume;
 
+        int gercekZaman = DateTime.Now.Hour;
+        if (gercekZaman <= 6 && gercekZaman >= 18)
+            Nigh.SetActive(true);
+        else
+            Morning.SetActive(true);
+
         BirdSDeger = PlayerPrefs.GetInt("SkinDegeri");
         if (BirdSDeger == 1)
         { anim.Play("RedBird"); }
@@ -49,11 +54,13 @@ public class Bird : MonoBehaviour
         Sounds.clip = Point;
 
         StartCoroutine(IEZaman());
+
+        Time.timeScale = 1;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !isDead)
         {
             rb2D.velocity = Vector2.up * velocity;
             dikeyHiz = 1f;
@@ -149,7 +156,8 @@ public class Bird : MonoBehaviour
             Time.timeScale = 0;
             isDead = true;
             GameScren.SetActive(false);
-            DeathScreen.SetActive(true);           
+            DeathScreen.SetActive(true);
+            managerGame.GecisReklamiKontrolu();
         }
     }
 

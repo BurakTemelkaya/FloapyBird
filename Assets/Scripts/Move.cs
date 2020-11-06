@@ -11,6 +11,8 @@ public class Move : MonoBehaviour
 
     private bool y, z;
 
+    public Spawner spawn;
+
     public void Start()
     {
         random();
@@ -23,35 +25,36 @@ public class Move : MonoBehaviour
         {
             dstry = 3.1f;
         }
-        Destroy(gameObject, dstry);
+        Destroy(gameObject, dstry);       
     }
 
     public void random()
-    {       
-        r = Random.Range(0,2);
-        if (r==0)
-        {
-            y = false;
-            z = true;
-        }
-        else
-        {
-            y = true;
-            z = false;
-        }
+    {          
+            r = Random.Range(0, 2);
+            if (r == 0)
+            {
+                y = false;
+                z = true;
+            }
+            else
+            {
+                y = true;
+                z = false;
+            }                       
     }
 
     void FixedUpdate()
     {
-        transform.position += Vector3.left * speed * Time.deltaTime;
-        if (Dif >= 1)
-        {
-            Hard();
-        }
-        if (Dif == 2)
-        {
-            VeryHard();
-        }
+            transform.position += Vector3.left * speed * Time.deltaTime;
+            if (Dif >= 1)
+            {
+                Hard();
+            }
+            if (Dif == 2)
+            {
+                VeryHard();
+            }
+             
     }
     private void Hard()
     {

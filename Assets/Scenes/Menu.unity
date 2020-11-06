@@ -446,7 +446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.45639917}
   m_AnchorMax: {x: 0.9731485, y: 0.5446009}
-  m_AnchoredPosition: {x: -328.17, y: 0.2901}
+  m_AnchoredPosition: {x: -328.16998, y: 0.2901001}
   m_SizeDelta: {x: -860.4646, y: -8.874832}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116800460
@@ -3087,7 +3087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.26515722}
   m_AnchorMax: {x: 1, y: 0.37812102}
-  m_AnchoredPosition: {x: 28, y: 8.124817}
+  m_AnchoredPosition: {x: 28, y: 8.124634}
   m_SizeDelta: {x: -305.87054, y: -3.0615234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &763546573
@@ -7135,6 +7135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managerGame: {fileID: 0}
+  dead: 0
 --- !u!4 &1991074379
 Transform:
   m_ObjectHideFlags: 0
@@ -7408,8 +7409,6 @@ MonoBehaviour:
     - m_Text: 30 FPS
       m_Image: {fileID: 0}
     - m_Text: 60 FPS
-      m_Image: {fileID: 0}
-    - m_Text: 120 FPS
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

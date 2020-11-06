@@ -9,6 +9,8 @@ ScriptsOnlyBuild:
     - Spawner
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
+    GoogleMobileAds.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -252,7 +254,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 462ce848465c4a63560c9b4e2336bfc5
+      Hash: 254977244b70ebc241635a32922c7091
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AdMob
@@ -438,7 +440,7 @@ ScriptsOnlyBuild:
     className: Spawner
   - hash:
       serializedVersion: 2
-      Hash: 1e4d2ea7969f3f5ff216e1c7d87d08f6
+      Hash: 6c96e723d3db0a12216696e5c81e84b4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Bird
@@ -690,7 +692,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: a52d0e8b8bd41e32d73e88e103d70bb3
+      Hash: 0db073aecf8ed6900582ba19d7601889
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Move

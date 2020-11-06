@@ -26,8 +26,6 @@ public class GameManager : MonoBehaviour
 
     public AdMob ad = null;
 
-    public Wait wait;
-
     private void Awake()
     {
         ad = GameObject.Find("AdMob").GetComponent<AdMob>();
@@ -63,12 +61,11 @@ public class GameManager : MonoBehaviour
         
         Bird = PlayerPrefs.GetInt("SkinDegeri");
         BirdSkin();        
-        
     }
 
     public void HealUse()
     {
-        Heal = PlayerPrefs.GetInt("Heal")+1;
+        Heal = PlayerPrefs.GetInt("Heal");
         if (Heal == 0)
         {
             HealText.color = Color.red;
@@ -86,9 +83,7 @@ public class GameManager : MonoBehaviour
             DeathScene.SetActive(false);
             GameScreen.SetActive(true);           
             Birdy.rb2D.transform.position = new Vector2(0,0);
-            wait.SetactiveFalse();
             Time.timeScale = 1;
-            StartCoroutine(wait.WaitIE());
         }
     }
     public void UpdateScore()
@@ -146,8 +141,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void HighScoreControl()
-    {
-
+    {       
         Hscore = PlayerPrefs.GetInt("HScore");
         if (Hscore<score)
         {
@@ -162,7 +156,11 @@ public class GameManager : MonoBehaviour
         }
 
         HighScore.text = Hscore.ToString();
-        LastScore.text = score.ToString();
+        LastScore.text = score.ToString();       
+    }
+    public void GecisReklamiKontrolu()
+    {
+        ad.InstentiateControl();
     }
 
     public void RestartGame()
@@ -214,10 +212,8 @@ public class GameManager : MonoBehaviour
     {
         if (SettingsDropValue==0)
             FPS = 30;
-        else if (SettingsDropValue == 1)
-            FPS = 60;
         else
-            FPS=120;
+            FPS = 60;
         volume = ScrolBar.value;
         PlayerPrefs.SetFloat("Volume", volume);
         PlayerPrefs.SetInt("SettingsDV", SettingsDropValue);              

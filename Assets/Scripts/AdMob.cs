@@ -11,18 +11,22 @@ public class AdMob : MonoBehaviour
 
     public GameManager managerGame = null;
 
-    bool rew;
+    bool rew,inte;
 
     public static AdMob obje = null;
 
+    private InterstitialAd interstitial;
+
+    public int dead;
+
     private void Awake()
     {
-        if (obje==null)
+        if (obje == null)
         {
             obje = this;
             DontDestroyOnLoad(this);
         }
-        else if(this != obje)
+        else if (this != obje)
         {
             Destroy(gameObject);
         }
@@ -34,6 +38,11 @@ public class AdMob : MonoBehaviour
         {
             CreateAndLoadRewardedAd();
         }
+        if (!inte)
+        {
+            RequestInterstitial();
+        }
+        
     }
     public void CreateAndLoadRewardedAd()
     {
@@ -54,7 +63,6 @@ public class AdMob : MonoBehaviour
         rewardedAd.OnAdClosed += HandleRewardedAdClosed;//Reklam videosu kapandıktan sonra yapılacak işlemler
 
         rewardedAd.LoadAd(requestrew);//Reklam videosu yükleme
-
     }
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
@@ -86,6 +94,48 @@ public class AdMob : MonoBehaviour
             managerGame.AdControlText.text = "Sorry, Ad video could not be uploaded. Try again later :(";
         }
     }
+    public void RequestInterstitial()
+    {
+
+#if UNITY_ANDROID
+        string adUnitId = "ca-app-pub-3940256099942544/1033173712";//ca-app-pub-6643171955921787/5375239745//gerçek
+#elif UNITY_IPHONE
+        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
+#else
+        string adUnitId = "unexpected_platform";
+#endif
+        if (interstitial != null)
+            interstitial.Destroy();
+        
+        interstitial = new InterstitialAd(adUnitId);
+
+        interstitial.OnAdLoaded += HandleOnAdLoaded;
+
+        AdRequest request = new AdRequest.Builder().Build();
+        interstitial.LoadAd(request);
+    }
+    public void HandleOnAdLoaded(object sender, EventArgs args)
+    {
+        inte = true;
+    }
+    public void InstentiateControl()
+    {
+        dead++;
+        if (dead == 5)
+        {
+            dead = 0;
+            ShowInstersitial();
+        }
+    }
+    public void ShowInstersitial()
+    {
+        if (interstitial.IsLoaded())
+        {
+            interstitial.Show();
+            RequestInterstitial();
+        }                            
+    }
+
     public void GameManagerGetCompenent()
     {
         managerGame = GameObject.Find("GameManager").GetComponent<GameManager>();
