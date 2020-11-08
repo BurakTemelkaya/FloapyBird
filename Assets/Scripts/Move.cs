@@ -45,7 +45,7 @@ public class Move : MonoBehaviour
 
     void FixedUpdate()
     {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            transform.localPosition += Vector3.left * speed * Time.deltaTime;
             if (Dif >= 1)
             {
                 Hard();
@@ -53,37 +53,34 @@ public class Move : MonoBehaviour
             if (Dif == 2)
             {
                 VeryHard();
-            }
-             
+            }            
     }
     private void Hard()
     {
         if (!y)
         {
-            transform.position += Vector3.up * Time.deltaTime / 4;
-            if (transform.position.y >= 0.8f)
+            transform.localPosition += Vector3.up * Time.deltaTime * 0.25f;
+            if (transform.localPosition.y >= 0.8f)
             {
                 y = true;
             }
         }
         else
         {
-            transform.position -= Vector3.up * Time.deltaTime / 4;
-            y = true;
-            if (transform.position.y <= -0.4f)
+            transform.localPosition -= Vector3.up * Time.deltaTime * 0.25f;
+            if (transform.localPosition.y <= -0.4f)
             {
                 y = false;
             }
         }
     }
-
     public void VeryHard()
     {
         if (z)
         {
             roz += Time.deltaTime*30;
-            transform.rotation = Quaternion.Euler(0, 0, roz);
-            if (transform.rotation.z >= 0.25f)
+            transform.localRotation = Quaternion.Euler(0, 0, roz);
+            if (transform.localRotation.z >= 0.25f)
             {
                 z = false;
             }
@@ -91,8 +88,8 @@ public class Move : MonoBehaviour
         else
         {
             roz -= Time.deltaTime*30;
-            transform.rotation = Quaternion.Euler(0, 0, roz);
-            if (transform.rotation.z <= -0.25f)
+            transform.localRotation = Quaternion.Euler(0, 0, roz);
+            if (transform.localRotation.z <= -0.25f)
             {           
                 z = true;
             }

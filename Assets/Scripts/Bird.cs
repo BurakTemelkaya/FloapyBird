@@ -27,7 +27,7 @@ public class Bird : MonoBehaviour
 
     public Text TimeText, DeadTimeText, DeadSceneHeal;
 
-    private int BirdSDeger;
+    private int BirdSDeger,wait;
 
     private float volume,dikeyHiz,yatayHiz=2.5f;
 
@@ -55,18 +55,19 @@ public class Bird : MonoBehaviour
 
         StartCoroutine(IEZaman());
 
+
+
         Time.timeScale = 1;
     }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !isDead)
         {
             rb2D.velocity = Vector2.up * velocity;
-            dikeyHiz = 1f;
+            dikeyHiz = 1.5f;
         }
 
-        dikeyHiz -= 3f * Time.deltaTime;
+        dikeyHiz -= 4.5f * Time.deltaTime;
 
         float egim = 90 * dikeyHiz / yatayHiz;
 
@@ -76,7 +77,21 @@ public class Bird : MonoBehaviour
         else if (egim > 30)
             egim = 30;
 
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, egim);
+        transform.localEulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, egim);
+    }
+
+    public IEnumerator IEZaman()
+    {
+        while (!isDead)
+        {
+            Times();
+            if (wait > 0)
+            {
+                wait--;
+            }
+            yield return new WaitForSeconds(1f);
+            
+        }
     }
     private void Times()
     {
@@ -115,15 +130,7 @@ public class Bird : MonoBehaviour
                 }
             }
         }
-    }
-    public IEnumerator IEZaman()
-    {        
-        while(!isDead)
-        {
-            Times();
-            yield return new WaitForSeconds(1f);
-        }       
-    }
+    }   
     private void TimeSetting()
     {
         int HighTimeSaniye = PlayerPrefs.GetInt("Saniye");
@@ -140,10 +147,11 @@ public class Bird : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "ScoreArea")
+        if (collision.gameObject.name == "ScoreArea" && wait==0)
         {           
             Sounds.Play();
             managerGame.UpdateScore();
+            wait = 2;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

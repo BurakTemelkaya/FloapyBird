@@ -81,8 +81,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Heal", Heal);
             PlayerPrefs.SetInt("UseHeal", UseHeal);
             DeathScene.SetActive(false);
-            GameScreen.SetActive(true);           
-            Birdy.rb2D.transform.position = new Vector2(0,0);
+            GameScreen.SetActive(true);
+            Birdy.isDead = false;
+            Birdy.rb2D.transform.position = new Vector2(0,0.4f);
             Time.timeScale = 1;
         }
     }

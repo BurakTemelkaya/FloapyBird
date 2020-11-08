@@ -9,8 +9,6 @@ ScriptsOnlyBuild:
     - Spawner
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
-    GoogleMobileAds.dll:
-    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:

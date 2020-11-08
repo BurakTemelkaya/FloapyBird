@@ -17,8 +17,6 @@ public class Spawner : MonoBehaviour
     private int dif;
 
     public Move mv;
-
-
     private void Start()
     {
         dif = PlayerPrefs.GetInt("Dif");

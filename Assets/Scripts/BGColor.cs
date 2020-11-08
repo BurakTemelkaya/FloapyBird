@@ -53,7 +53,7 @@ public class BGColor : MonoBehaviour
             }
              
 
-        BG.color = new Color32(r, g, b, 255);
+            BG.color = new Color32(r, g, b, 255);
 
             Title.color = new Color32(g, b, r, 255);
 
