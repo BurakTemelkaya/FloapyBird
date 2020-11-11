@@ -42,12 +42,13 @@ public class AdMob : MonoBehaviour
         {
             RequestInterstitial();
         }
+       
         
     }
     public void CreateAndLoadRewardedAd()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-6643171955921787/6886730600";////test reklam birimi//ca-app-pub-3940256099942544/5224354917
+        string adUnitId = "ca-app-pub-3940256099942544/5224354917";//ca-app-pub-6643171955921787/6886730600
 #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/1712485313";
 #else
@@ -98,7 +99,7 @@ public class AdMob : MonoBehaviour
     {
 
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-6643171955921787/5375239745";////test////ca-app-pub-3940256099942544/1033173712
+        string adUnitId = "ca-app-pub-3940256099942544/1033173712";//ca-app-pub-6643171955921787/5375239745
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else

@@ -716,4 +716,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Oyun.unity
-  playerPath: C:/Users/Burak/Desktop/FloappyBirdApk/FloapyBird.apk
+  playerPath: C:/Users/Burak/Desktop/FloappyBirdApk/FloapyBirdSinirsiz.apk

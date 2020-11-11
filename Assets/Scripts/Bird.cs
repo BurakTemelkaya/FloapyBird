@@ -11,25 +11,25 @@ public class Bird : MonoBehaviour
 
     public float velocity = 1f;
 
-    public int saniye, dakika, Heal;
+    [HideInInspector] public int saniye, dakika, Heal;
 
-    public Rigidbody2D rb2D;
+    [HideInInspector] public Rigidbody2D rb2D;
 
-    public GameManager managerGame;
+    [HideInInspector] public GameManager managerGame;
 
-    public GameObject DeathScreen, GameScren, admob, Nigh , Morning;
+    [HideInInspector]public GameObject DeathScreen, GameScren, admob, Nigh , Morning;
 
-    public AudioClip Point;
+    [HideInInspector]public AudioClip Point;
 
-    public AudioSource Sounds, DeadScreenSound;
+    [HideInInspector] public AudioSource Sounds, DeadScreenSound;
 
-    public Animator anim;
+    [HideInInspector] public Animator anim;
 
-    public Text TimeText, DeadTimeText, DeadSceneHeal;
+    [HideInInspector] public Text TimeText, DeadTimeText, DeadSceneHeal;
 
-    private int BirdSDeger,wait;
+    [HideInInspector] private int BirdSDeger,wait;
 
-    private float volume,dikeyHiz,yatayHiz=2.5f;
+    private float volume,dikeyHiz,yatayHiz=2.5f,egim;
 
     private void Start()
     {
@@ -69,7 +69,7 @@ public class Bird : MonoBehaviour
 
         dikeyHiz -= 4.5f * Time.deltaTime;
 
-        float egim = 90 * dikeyHiz / yatayHiz;
+        egim = 90 * dikeyHiz / yatayHiz;
 
         if (egim < -30)
             egim = -30;
