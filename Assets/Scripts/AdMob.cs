@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using GoogleMobileAds.Api;
 using System;
 
@@ -34,16 +32,8 @@ public class AdMob : MonoBehaviour
     private void Start()
     {
         MobileAds.Initialize(reklam => { });
-        if (!rew)
-        {
             CreateAndLoadRewardedAd();
-        }
-        if (!inte)
-        {
-            RequestInterstitial();
-        }
-       
-        
+            RequestInterstitial();                     
     }
     public void CreateAndLoadRewardedAd()
     {
