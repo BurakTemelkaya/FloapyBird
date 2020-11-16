@@ -9,6 +9,8 @@ ScriptsOnlyBuild:
     - Spawner
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
+    GoogleMobileAds.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -716,4 +718,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Oyun.unity
-  playerPath: C:/Users/Burak/Desktop/FloappyBirdApk/FloapyBirdSinirsiz.apk
+  playerPath: C:/Users/Burak/Desktop/FloappyBirdApk/FloapyBird.aab

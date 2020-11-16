@@ -9,8 +9,6 @@ public class AdMob : MonoBehaviour
 
     public GameManager managerGame = null;
 
-    bool rew,inte;
-
     public static AdMob obje = null;
 
     private InterstitialAd interstitial;
@@ -38,7 +36,7 @@ public class AdMob : MonoBehaviour
     public void CreateAndLoadRewardedAd()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/5224354917";//ca-app-pub-6643171955921787/6886730600
+        string adUnitId = "ca-app-pub-6643171955921787/6886730600";
 #elif UNITY_IPHONE
             string adUnitId = "ca-app-pub-3940256099942544/1712485313";
 #else
@@ -49,15 +47,10 @@ public class AdMob : MonoBehaviour
 
         AdRequest requestrew = new AdRequest.Builder().Build();//Reklam videosu isteği
 
-        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;//Reklam videosu başarılı bir şekilde yüklendiğinde
         rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;//Reklam Videosu tam izlendikten sonra ödül verme işlemi
         rewardedAd.OnAdClosed += HandleRewardedAdClosed;//Reklam videosu kapandıktan sonra yapılacak işlemler
 
         rewardedAd.LoadAd(requestrew);//Reklam videosu yükleme
-    }
-    public void HandleRewardedAdLoaded(object sender, EventArgs args)
-    {
-        rew = true;
     }
     public void HandleUserEarnedReward(object sender, Reward args)
     {
@@ -89,7 +82,7 @@ public class AdMob : MonoBehaviour
     {
 
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/1033173712";//ca-app-pub-6643171955921787/5375239745
+        string adUnitId = "ca-app-pub-6643171955921787/5375239745";
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 #else
@@ -100,14 +93,8 @@ public class AdMob : MonoBehaviour
         
         interstitial = new InterstitialAd(adUnitId);
 
-        interstitial.OnAdLoaded += HandleOnAdLoaded;
-
         AdRequest request = new AdRequest.Builder().Build();
         interstitial.LoadAd(request);
-    }
-    public void HandleOnAdLoaded(object sender, EventArgs args)
-    {
-        inte = true;
     }
     public void InstentiateControl()
     {

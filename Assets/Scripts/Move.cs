@@ -41,7 +41,7 @@ public class Move : MonoBehaviour
             }                       
     }
 
-    void FixedUpdate()
+    void Update()
     {
             transform.localPosition += Vector3.left * speed * Time.deltaTime;
             if (Dif >= 1)
