@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public int Bird, BirdDeger, Heal, ZamanMenu, UseHeal, Hscore, score, FPS, SettingsDropValue,Quality;
+    [HideInInspector]public int Bird, BirdDeger, Heal, ZamanMenu, UseHeal, Hscore, score, FPS, SettingsDropValue,Quality,DeadTotal;
 
     public float volume;
 
     public Text ScoreText, LastScore, HighScoreText, HighScore;
 
-    public Text MenuHighScore,HighTime,HealText,UsedHeal,AdControlText;
+    public Text MenuHighScore,HighTime,HealText,UsedHeal,AdControlText,TotalDeadText;
 
     public GameObject RedBird, BlueBird, YellowBird, DeathScene,GameScreen,AdControl,SettingsPanel,ExitPanel;
 
@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         Heal = PlayerPrefs.GetInt("Heal");
         HealText.text = Heal.ToString();
         MenuHighScore.text = PlayerPrefs.GetInt("HScore").ToString();
+        TotalDeadText.text = PlayerPrefs.GetInt("TotalDead").ToString();
         
         Bird = PlayerPrefs.GetInt("SkinDegeri");
         BirdSkin();        
@@ -158,7 +159,13 @@ public class GameManager : MonoBehaviour
     }
     public void GecisReklamiKontrolu()
     {
-        ad.InstentiateControl();
+        ad.InstentiateControl();    
+    }
+    public void TotalDead()
+    {
+        DeadTotal = PlayerPrefs.GetInt("TotalDead");
+        DeadTotal++;
+        PlayerPrefs.SetInt("TotalDead", DeadTotal);
     }
 
     public void RestartGame()

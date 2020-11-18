@@ -36,7 +36,7 @@ public class Bird : MonoBehaviour
         DeadScreenSound.volume = volume;
 
         int gercekZaman = DateTime.Now.Hour;
-        if (gercekZaman <= 6 && gercekZaman >= 18)
+        if (gercekZaman <= 6 || gercekZaman >= 18)
             Nigh.SetActive(true);
         else
             Morning.SetActive(true);
@@ -161,9 +161,10 @@ public class Bird : MonoBehaviour
             managerGame.HealUpdate();
             Time.timeScale = 0;
             isDead = true;
+            managerGame.TotalDead();
             GameScren.SetActive(false);
             DeathScreen.SetActive(true);
-            managerGame.GecisReklamiKontrolu();
+            managerGame.GecisReklamiKontrolu();           
         }
     }
 

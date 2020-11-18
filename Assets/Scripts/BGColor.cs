@@ -8,7 +8,7 @@ public class BGColor : MonoBehaviour
 
     public Image BG;
 
-    [HideInInspector]public Text HScore, HTime,TScore,THTime,HealText,Heal,Title,Dif,DifLabel;
+    public Text HScore, HTime,TScore,THTime,HealText,Heal,Title,Dif,DifLabel,TotalDead,TotalDeadText;
 
     public int Color;
     void Start()
@@ -66,6 +66,9 @@ public class BGColor : MonoBehaviour
 
             Dif.color = new Color32(b, r, g, 255);
             DifLabel.color = new Color32(b, r, g, 255);
+
+            TotalDead.color = new Color32(b, r, g, 255);
+            TotalDeadText.color = new Color32(b, r, g, 255);
 
     }
 }

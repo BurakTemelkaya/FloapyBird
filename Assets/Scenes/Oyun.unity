@@ -425,7 +425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5783333}
   m_AnchorMax: {x: 1, y: 0.66666675}
-  m_AnchoredPosition: {x: -94.07901, y: -0.000030517578}
+  m_AnchoredPosition: {x: -94.07898, y: -0.000030517578}
   m_SizeDelta: {x: -244.48332, y: -3.734871}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &43650348
@@ -508,6 +508,7 @@ MonoBehaviour:
   FPS: 0
   SettingsDropValue: 0
   Quality: 0
+  DeadTotal: 0
   volume: 0
   ScoreText: {fileID: 1046898816}
   LastScore: {fileID: 630497704}
@@ -518,6 +519,7 @@ MonoBehaviour:
   HealText: {fileID: 1690174166}
   UsedHeal: {fileID: 1250629096}
   AdControlText: {fileID: 901494452}
+  TotalDeadText: {fileID: 0}
   RedBird: {fileID: 0}
   BlueBird: {fileID: 0}
   YellowBird: {fileID: 0}
@@ -1398,7 +1400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.112}
   m_AnchorMin: {x: 0, y: 0.35833347}
   m_AnchorMax: {x: 1, y: 0.42666674}
-  m_AnchoredPosition: {x: -95.759, y: -3.8627}
+  m_AnchoredPosition: {x: -95.75897, y: -3.8627014}
   m_SizeDelta: {x: -251.32428, y: 7.725357}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737989028
@@ -1526,7 +1528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.13000001}
   m_AnchorMax: {x: 1, y: 0.215}
-  m_AnchoredPosition: {x: 95.062, y: 7.678467}
+  m_AnchoredPosition: {x: 95.06201, y: 7.678467}
   m_SizeDelta: {x: -277.2047, y: -3.3563232}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &808658721
@@ -1940,7 +1942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.112}
   m_AnchorMin: {x: 0, y: 0.13000001}
   m_AnchorMax: {x: 0.97800004, y: 0.22500001}
-  m_AnchoredPosition: {x: -43.854004, y: 4.678406}
+  m_AnchoredPosition: {x: -43.854004, y: 4.6784363}
   m_SizeDelta: {x: -143.41515, y: -0.35939026}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &998610838
@@ -2074,6 +2076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1088612005}
   - component: {fileID: 1088612006}
+  - component: {fileID: 1088612007}
   m_Layer: 0
   m_Name: Mobile - Flappy Bird - Version 12 Sprites_0
   m_TagString: Untagged
@@ -2089,7 +2092,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088612004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25776926, y: -0.312449, z: 509.7683}
+  m_LocalPosition: {x: -0.362, y: -0.312449, z: 509.7683}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1470756407}
@@ -2139,13 +2142,32 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.44, y: 2.56}
+  m_DrawMode: 2
+  m_Size: {x: 3.4832056, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1088612007
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088612004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5ef8d1fb708f8e44b15edd73ec8fa54, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1106690565
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,7 +2389,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.26000002}
   m_AnchorMax: {x: 1, y: 0.33}
-  m_AnchoredPosition: {x: 98.752, y: -0.41122437}
+  m_AnchoredPosition: {x: 98.752014, y: -0.41122437}
   m_SizeDelta: {x: -243.4749, y: -1.5024853}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1250629096
@@ -2906,7 +2928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1470756407
 Transform:
   m_ObjectHideFlags: 0
@@ -2932,6 +2954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1597290232}
   - component: {fileID: 1597290233}
+  - component: {fileID: 1597290234}
   m_Layer: 0
   m_Name: Mobile - Flappy Bird - Version 12 Sprites_1
   m_TagString: Untagged
@@ -2947,7 +2970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597290231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25776926, y: -0.312449, z: 509.7683}
+  m_LocalPosition: {x: -0.234, y: -0.312449, z: 509.7683}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1651196137}
@@ -2997,13 +3020,32 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.44, y: 2.56}
+  m_DrawMode: 2
+  m_Size: {x: 3.3862505, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1597290234
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597290231}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e96be00b99aa30544a1c64a9a78a42c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1606398449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3149,7 +3191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.112}
   m_AnchorMin: {x: 0, y: 0.34166664}
   m_AnchorMax: {x: 1, y: 0.42666674}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -261.50378, y: 0.8037834}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1656223567
@@ -3277,7 +3319,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.112}
   m_AnchorMin: {x: 0, y: 0.34166664}
   m_AnchorMax: {x: 1, y: 0.42666674}
-  m_AnchoredPosition: {x: 98.752, y: 1.5392}
+  m_AnchoredPosition: {x: 98.752014, y: 1.5391998}
   m_SizeDelta: {x: -265.34024, y: -2.2746353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1690174166
@@ -3509,7 +3551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.112}
   m_AnchorMin: {x: 0, y: 0.035}
   m_AnchorMax: {x: 0.97800004, y: 0.13000001}
-  m_AnchoredPosition: {x: -45.013992, y: 0.18063354}
+  m_AnchoredPosition: {x: -45.013977, y: 0.18060303}
   m_SizeDelta: {x: -149.83455, y: -0.35939026}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919605918
@@ -3795,7 +3837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2466667}
   m_AnchorMax: {x: 1, y: 0.32000002}
-  m_AnchoredPosition: {x: -47.337, y: 3.4987717}
+  m_AnchoredPosition: {x: -47.336975, y: 3.4987106}
   m_SizeDelta: {x: -154.47961, y: 2.6775055}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1976259207
