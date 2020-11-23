@@ -23,11 +23,12 @@ public class GameManager : MonoBehaviour
 
     public AdMob ad = null;
 
+    public bool menu;
+
     private void Awake()
     {
         ad = GameObject.Find("AdMob").GetComponent<AdMob>();
         ad.GameManagerGetCompenent();
-
     }
     void Start()
     {       
@@ -47,20 +48,23 @@ public class GameManager : MonoBehaviour
         {
             HighTime.text = "0";
         }
-        QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
-        Application.targetFrameRate = PlayerPrefs.GetInt("FPS");       
-        
-
-        dropdown.value = PlayerPrefs.GetInt("Dif");
+        if (!ad.setting)
+        {          
+            QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
+            Application.targetFrameRate = PlayerPrefs.GetInt("FPS");           
+        }
+        if (menu)
+        {
+            dropdown.value = PlayerPrefs.GetInt("Dif");
+            MenuHighScore.text = PlayerPrefs.GetInt("HScore").ToString();
+            TotalDeadText.text = PlayerPrefs.GetInt("TotalDead").ToString();
+            BirdSkin();
+        }
         Heal = PlayerPrefs.GetInt("Heal");
-        HealText.text = Heal.ToString();
-        MenuHighScore.text = PlayerPrefs.GetInt("HScore").ToString();
-        TotalDeadText.text = PlayerPrefs.GetInt("TotalDead").ToString();
-        
+        HealText.text = Heal.ToString();                      
         Bird = PlayerPrefs.GetInt("SkinDegeri");
-        BirdSkin();        
+        ad.setting = true;               
     }
-
     public void HealUse()
     {
         Heal = PlayerPrefs.GetInt("Heal");
@@ -90,13 +94,11 @@ public class GameManager : MonoBehaviour
         score += PlayerPrefs.GetInt("Dif") + 1;
         ScoreText.text = score.ToString();
     }
-
     public void HealUpdate()
     {
         Heal = PlayerPrefs.GetInt("Heal");
         HealText.text = Heal.ToString();
     }
-
     public void BirdSkin()
     {
         RedBird.SetActive(false);
@@ -116,8 +118,7 @@ public class GameManager : MonoBehaviour
         {
             YellowBird.SetActive(true);
             BirdDeger = 3;
-        }
-        
+        }       
     }
     public void arttir()
     {
@@ -127,8 +128,7 @@ public class GameManager : MonoBehaviour
             Bird = 1;
         }
         BirdSkin();
-    }
-    
+    }   
     public void azalt()
     {
         Bird--;
@@ -138,7 +138,6 @@ public class GameManager : MonoBehaviour
         }
         BirdSkin();
     }
-
     public void HighScoreControl()
     {       
         Hscore = PlayerPrefs.GetInt("HScore");
@@ -146,14 +145,13 @@ public class GameManager : MonoBehaviour
         {
             Hscore = score;
             PlayerPrefs.SetInt("HScore", Hscore);
-            HighScoreText.fontSize = (30);
+            HighScoreText.fontSize = (70);
             HighScoreText.text = "NEW HIGH SCORE";         
         }
         else
         {
             HighScoreText.text = "HIGH SCORE";
         }
-
         HighScore.text = Hscore.ToString();
         LastScore.text = score.ToString();       
     }
@@ -167,39 +165,32 @@ public class GameManager : MonoBehaviour
         DeadTotal++;
         PlayerPrefs.SetInt("TotalDead", DeadTotal);
     }
-
     public void RestartGame()
     {
         SceneManager.LoadScene("Oyun");
     }
-
     public void StartGame()
     {
         PlayerPrefs.SetInt("SkinDegeri", BirdDeger);
         SceneManager.LoadScene("Oyun"); 
-    }
-    
+    }  
     public void ReturnMenu()
     {
         SceneManager.LoadScene("Menu");
     }
-
     public void AdControlClose()
     {
         AdControl.SetActive(false);
     }
-
     public void Diffuculty(int index)
     {
         int dif=index;      
         PlayerPrefs.SetInt("Dif", dif);
     }
-
     public void FPSVoid(int fps)
     {      
         SettingsDropValue = fps;
     }
-
     public void SettingsPanelOpen()
     {
         Time.timeScale = 0;
@@ -250,8 +241,5 @@ public class GameManager : MonoBehaviour
     public void AdControlPanelOpen()
     {
         AdControl.SetActive(true);
-    }
-
-
-    
+    } 
 }

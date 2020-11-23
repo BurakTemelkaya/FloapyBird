@@ -8,12 +8,15 @@ public class BGColor : MonoBehaviour
 
     public Image BG;
 
-    public Text HScore, HTime,TScore,THTime,HealText,Heal,Title,Dif,DifLabel,TotalDead,TotalDeadText;
+    [HideInInspector]public Text HScore, HTime,TScore,THTime,HealText,Heal,Title,Dif,DifLabel,TotalDead,TotalDeadText;
 
     public int Color;
+
+    public GameManager managerGame;
     void Start()
     {
-        Time.timeScale = 1;      
+        Time.timeScale = 1;
+        managerGame.menu = true;
     }
 
     void FixedUpdate()

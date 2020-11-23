@@ -9,6 +9,8 @@ ScriptsOnlyBuild:
     - Spawner
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
+    GoogleMobileAds.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -252,7 +254,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 254977244b70ebc241635a32922c7091
+      Hash: c41f77d236ed148a0c314f8408c0af21
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AdMob
@@ -276,7 +278,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: c937ac0a6fb58fc5d659258e0953bb57
+      Hash: c1aed150d85397f40102d4e86a7ec78c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -426,7 +428,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 49a4818497743d03b791ad7418aefc99
+      Hash: 545a4734fcd2e695a59c67fa5df53954
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BGColor

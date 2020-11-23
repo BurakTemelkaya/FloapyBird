@@ -15,6 +15,8 @@ public class AdMob : MonoBehaviour
 
     public int dead;
 
+    public bool setting;
+
     private void Awake()
     {
         if (obje == null)
@@ -31,7 +33,8 @@ public class AdMob : MonoBehaviour
     {
         MobileAds.Initialize(reklam => { });
             CreateAndLoadRewardedAd();
-            RequestInterstitial();                     
+            RequestInterstitial();
+        setting = true;
     }
     public void CreateAndLoadRewardedAd()
     {
@@ -113,13 +116,8 @@ public class AdMob : MonoBehaviour
             RequestInterstitial();
         }                            
     }
-
     public void GameManagerGetCompenent()
     {
         managerGame = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
-
-
-
-
 }
