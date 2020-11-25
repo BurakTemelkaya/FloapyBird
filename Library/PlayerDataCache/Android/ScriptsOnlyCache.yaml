@@ -9,8 +9,6 @@ ScriptsOnlyBuild:
     - Spawner
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
-    GoogleMobileAds.dll:
-    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
@@ -278,7 +276,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: c1aed150d85397f40102d4e86a7ec78c
+      Hash: d7843367879fa5bcfb8c2a250e6f9e1a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager

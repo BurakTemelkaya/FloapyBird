@@ -27,7 +27,9 @@ public class Bird : MonoBehaviour
 
     [HideInInspector] private int BirdSDeger,wait;
 
-    private float volume,dikeyHiz,yatayHiz=2.5f,egim;
+    [HideInInspector]private float volume,dikeyHiz,yatayHiz=2.5f,egim;
+
+    private string sure;
 
     private void Start()
     {
@@ -52,9 +54,6 @@ public class Bird : MonoBehaviour
         Sounds.clip = Point;
 
         StartCoroutine(IEZaman());
-
-
-
         Time.timeScale = 1;
     }
     void Update()
@@ -87,12 +86,11 @@ public class Bird : MonoBehaviour
             {
                 wait--;
             }
-            yield return new WaitForSeconds(1f);
-            
+            yield return new WaitForSeconds(1f);           
         }
     }
     private void Times()
-    {
+    {       
         saniye++;  
         if (saniye == 60)
         {
@@ -101,7 +99,7 @@ public class Bird : MonoBehaviour
         }
         if (dakika == 0)
         {
-            TimeText.text = saniye.ToString();
+            sure = saniye.ToString();
         }
         else
         {
@@ -109,39 +107,40 @@ public class Bird : MonoBehaviour
             {
                 if (saniye < 10)
                 {
-                    TimeText.text = "0" + dakika + ":" + "0" + saniye;
+                    sure = "0" + dakika + ":" + "0" + saniye;
                 }
                 else
                 {
-                    TimeText.text = "0" + dakika + ":" + saniye;
+                    sure = "0" + dakika + ":" + saniye;
                 }
             }
             else
             {
                 if (saniye < 10)
                 {
-                    TimeText.text = dakika + ":" + "0" + saniye;
+                    sure = dakika + ":" + "0" + saniye;
                 }
                 else
                 {
-                    TimeText.text = dakika + ":" + saniye;
+                    sure = dakika + ":" + saniye;
                 }
             }
         }
+        TimeText.text = sure;
     }   
     private void TimeSetting()
     {
         int HighTimeSaniye = PlayerPrefs.GetInt("Saniye");
         int HighTimeDakika = PlayerPrefs.GetInt("Dakika");
-
-        if (HighTimeSaniye < saniye && HighTimeDakika <= dakika || HighTimeSaniye <= saniye && dakika < HighTimeDakika)
+        int HighSaniye = HighTimeSaniye + HighTimeDakika * 60;
+        int SuankiToplamSaniye = saniye + dakika * 60;
+        if (SuankiToplamSaniye>HighSaniye)
         {
-            PlayerPrefs.SetString("HighZaman", TimeText.text);
-                
+            PlayerPrefs.SetString("HighZaman", sure);           
             PlayerPrefs.SetInt("Saniye", saniye);
-            PlayerPrefs.SetInt("Dakika", dakika);
+            PlayerPrefs.SetInt("Dakika", dakika);            
         }
-        DeadTimeText.text = TimeText.text;
+        DeadTimeText.text = sure;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -162,9 +161,9 @@ public class Bird : MonoBehaviour
             Time.timeScale = 0;
             isDead = true;
             managerGame.TotalDead();
+            managerGame.GecisReklamiKontrolu();
             GameScren.SetActive(false);
             DeathScreen.SetActive(true);
-            managerGame.GecisReklamiKontrolu();           
         }
     }
 

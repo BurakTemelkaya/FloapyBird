@@ -9,21 +9,25 @@ public class GameManager : MonoBehaviour
 
     public float volume;
 
-    public Text ScoreText, LastScore, HighScoreText, HighScore;
+    [HideInInspector]public Text ScoreText, LastScore, HighScoreText, HighScore;
 
-    public Text MenuHighScore,HighTime,HealText,UsedHeal,AdControlText,TotalDeadText;
+    [HideInInspector]public Text MenuHighScore,HighTime,HealText,UsedHeal,AdControlText,TotalDeadText;
 
-    public GameObject RedBird, BlueBird, YellowBird, DeathScene,GameScreen,AdControl,SettingsPanel,ExitPanel;
+    public Toggle bgcoloranimation;
+
+    [HideInInspector]public GameObject RedBird, BlueBird, YellowBird, DeathScene,GameScreen,AdControl,SettingsPanel,ExitPanel;
 
     public Bird Birdy;
 
-    public Dropdown dropdown,SettingsDropdown,QualityDropDown;
+    [HideInInspector]public Dropdown dropdown,SettingsDropdown,QualityDropDown;
 
     public Scrollbar ScrolBar;
 
     public AdMob ad = null;
 
     public bool menu;
+
+    int dif;
 
     private void Awake()
     {
@@ -41,13 +45,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Save", 1);
         }
         if (PlayerPrefs.HasKey("HighZaman"))
-        {
             HighTime.text = PlayerPrefs.GetString("HighZaman");
-        }
         else
-        {
             HighTime.text = "0";
-        }
         if (!ad.setting)
         {          
             QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
             TotalDeadText.text = PlayerPrefs.GetInt("TotalDead").ToString();
             BirdSkin();
         }
+        dif = PlayerPrefs.GetInt("Dif");
         Heal = PlayerPrefs.GetInt("Heal");
         HealText.text = Heal.ToString();                      
         Bird = PlayerPrefs.GetInt("SkinDegeri");
@@ -91,7 +92,7 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateScore()
     {
-        score += PlayerPrefs.GetInt("Dif") + 1;
+        score += dif + 1;
         ScoreText.text = score.ToString();
     }
     public void HealUpdate()
@@ -209,7 +210,7 @@ public class GameManager : MonoBehaviour
         if (SettingsDropValue==0)
             FPS = 30;
         else
-            FPS = 60;
+            FPS = 60;         
         volume = ScrolBar.value;
         PlayerPrefs.SetFloat("Volume", volume);
         PlayerPrefs.SetInt("SettingsDV", SettingsDropValue);              

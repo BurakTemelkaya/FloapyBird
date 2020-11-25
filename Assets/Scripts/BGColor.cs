@@ -20,8 +20,7 @@ public class BGColor : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-            
+    {            
             if (r >= 255 && g <= 255 && b <= 0 )
             {
                 g += Convert.ToByte(Time.deltaTime * Color);
@@ -72,6 +71,5 @@ public class BGColor : MonoBehaviour
 
             TotalDead.color = new Color32(b, r, g, 255);
             TotalDeadText.color = new Color32(b, r, g, 255);
-
     }
 }
