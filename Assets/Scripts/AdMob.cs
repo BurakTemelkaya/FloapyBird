@@ -31,9 +31,9 @@ public class AdMob : MonoBehaviour
     }
     private void Start()
     {
-        MobileAds.Initialize(reklam => { });
+        /*MobileAds.Initialize(reklam => { });
             CreateAndLoadRewardedAd();
-            RequestInterstitial();
+            RequestInterstitial();*/
         setting = true;
     }
     public void CreateAndLoadRewardedAd()

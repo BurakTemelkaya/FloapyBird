@@ -23,7 +23,7 @@ public class Bird : MonoBehaviour
 
     [HideInInspector] public Animator anim;
 
-    [HideInInspector] public Text TimeText, DeadTimeText, DeadSceneHeal;
+     public Text TimeText, DeadTimeText, DeadSceneHeal;
 
     [HideInInspector] private int BirdSDeger,wait;
 
@@ -138,7 +138,8 @@ public class Bird : MonoBehaviour
         {
             PlayerPrefs.SetString("HighZaman", sure);           
             PlayerPrefs.SetInt("Saniye", saniye);
-            PlayerPrefs.SetInt("Dakika", dakika);            
+            PlayerPrefs.SetInt("Dakika", dakika);    
+            
         }
         DeadTimeText.text = sure;
     }

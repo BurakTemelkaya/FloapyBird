@@ -50,26 +50,25 @@ public class BGColor : MonoBehaviour
             {
                 b -= Convert.ToByte(Time.deltaTime * Color);
             }
-             
 
-            BG.color = new Color32(r, g, b, 255);
+            BG.color = new Color32(g, b, r, 255);
 
-            Title.color = new Color32(g, b, r, 255);
+            Title.color = new Color32(b, r, g, 255);
 
-            HTime.color= new Color32(b, r, g, 255);
+            HTime.color= new Color32(r, g, b, 255);
 
-            HScore.color = new Color32(b, r, g, 255);
+            HScore.color = new Color32(r, g, b, 255);
 
-            THTime.color = new Color32(b, r, g, 255);
-            TScore.color= new Color32(b, r, g, 255);
+            THTime.color = new Color32(r, g, b, 255);
+            TScore.color= new Color32(r, g, b, 255);
 
-            HealText.color = new Color32(b, r, g, 255);
-            Heal.color = new Color32(b, r, g, 255);
+            HealText.color = new Color32(r, g, b, 255);
+            Heal.color = new Color32(r, g, b, 255);
 
-            Dif.color = new Color32(b, r, g, 255);
-            DifLabel.color = new Color32(b, r, g, 255);
+            Dif.color = new Color32(r, g, b, 255);
+            DifLabel.color = new Color32(r, g, b, 255);
 
-            TotalDead.color = new Color32(b, r, g, 255);
-            TotalDeadText.color = new Color32(b, r, g, 255);
+            TotalDead.color = new Color32(r, g, b, 255);
+            TotalDeadText.color = new Color32(r, g, b, 255);
     }
 }

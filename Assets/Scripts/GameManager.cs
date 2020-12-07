@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]public Text ScoreText, LastScore, HighScoreText, HighScore;
 
-    [HideInInspector]public Text MenuHighScore,HighTime,HealText,UsedHeal,AdControlText,TotalDeadText;
+    public Text MenuHighScore,HighTime,HealText,UsedHeal,AdControlText,TotalDeadText;
 
     public Toggle bgcoloranimation;
 
@@ -43,11 +43,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("FPS", 60);
             PlayerPrefs.SetInt("SettingsDV", 1);
             PlayerPrefs.SetInt("Save", 1);
-        }
-        if (PlayerPrefs.HasKey("HighZaman"))
-            HighTime.text = PlayerPrefs.GetString("HighZaman");
-        else
-            HighTime.text = "0";
+        }       
         if (!ad.setting)
         {          
             QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
@@ -59,6 +55,10 @@ public class GameManager : MonoBehaviour
             MenuHighScore.text = PlayerPrefs.GetInt("HScore").ToString();
             TotalDeadText.text = PlayerPrefs.GetInt("TotalDead").ToString();
             BirdSkin();
+            if (PlayerPrefs.HasKey("HighZaman"))
+                HighTime.text = PlayerPrefs.GetString("HighZaman");
+            else
+                HighTime.text = "0";
         }
         dif = PlayerPrefs.GetInt("Dif");
         Heal = PlayerPrefs.GetInt("Heal");
@@ -154,7 +154,8 @@ public class GameManager : MonoBehaviour
             HighScoreText.text = "HIGH SCORE";
         }
         HighScore.text = Hscore.ToString();
-        LastScore.text = score.ToString();       
+        LastScore.text = score.ToString();
+        HighTime.text = PlayerPrefs.GetString("HighZaman");
     }
     public void GecisReklamiKontrolu()
     {
@@ -236,9 +237,7 @@ public class GameManager : MonoBehaviour
     public void Exit()
     { Application.Quit(); }
     public void AdVideoWatch()
-    {
-        ad.UserChoseToWatchAd();
-    }
+    {ad.UserChoseToWatchAd();}
     public void AdControlPanelOpen()
     {
         AdControl.SetActive(true);
